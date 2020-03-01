@@ -4,12 +4,14 @@ from config import (
     DEEP_MUTATION_THRESHOLD, CROSSOVER_THRESHOLD, MUTATION_THRESHOLD
 )
 from genome import Genome
+from graph import graph_percentages
 
 
 class GeneticAlgorithm():
 
     def __init__(self, inital_pop):
         self.population = inital_pop
+        self.percentages = []
 
     def selection(self):
 
@@ -49,5 +51,5 @@ class GeneticAlgorithm():
                     self.population[i].deep_mutation()
                 else:
                     self.population[i].deep_crossover(winner)
-
-            print(self.population.percent_one())
+            self.percentages.append(self.population.percent_one())
+        graph_percentages(self.percentages)
