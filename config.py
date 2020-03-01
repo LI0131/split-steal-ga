@@ -1,0 +1,16 @@
+import os
+
+POPUALATION_SIZE = int(os.environ.get('POPULATION_SIZE', 100))
+CHROMOSOME_SIZE = int(os.environ.get('CHROMOSOME_SIZE', 10))
+GENOME_SIZE = int(os.environ.get('GENOME_SIZE', 10))
+GENE_PROBABILITY = float(os.environ.get('GENE_PROBABILITY', 0.5))
+SELECTION_SIZE = int(os.environ.get('SELECTION_SIZE', 10))
+ITERATIONS = int(os.environ.get('ITERATIONS', 100))
+GENOME_CROSSOVER_PROBABILITY = float(os.environ.get('GENOME_CROSSOVER_PROBABILITY', 0.5))
+CHROMOSOME_CROSSOVER_PROBABILITY = float(os.environ.get('CHROMOSOME_CROSSOVER_PROBABILITY', 0.5))
+
+# The following four values must sum to 1.0
+MUTATION_THRESHOLD = float(os.environ.get('MUTATION_THRESHOLD', 0.10))
+CROSSOVER_THRESHOLD = float(os.environ.get('CROSSOVER_THRESHOLD', 0.60))
+DEEP_MUTATION_THRESHOLD = float(os.environ.get('DEEP_MUTATION_THRESHOLD', 0.05))
+DEEP_CROSSOVER_THRESHOLD = float(os.environ.get('DEEP_CROSSOVER_THRESHOLD', 0.25))
