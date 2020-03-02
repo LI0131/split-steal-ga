@@ -12,6 +12,7 @@ class GeneticAlgorithm():
     def __init__(self, inital_pop):
         self.population = inital_pop
         self.percentages = []
+        self.winner_percentages = []
 
     def selection(self):
 
@@ -44,12 +45,17 @@ class GeneticAlgorithm():
             for i in range(len(self.population)):
                 prob = random()
                 if prob > MUTATION_THRESHOLD and prob <= MUTATION_THRESHOLD + CROSSOVER_THRESHOLD:
-                    self.population[i].mutate()
-                elif prob > MUTATION_THRESHOLD + CROSSOVER_THRESHOLD and prob <= CROSSOVER_THRESHOLD + DEEP_MUTATION_THRESHOLD:
                     self.population[i].crossover(winner)
-                elif prob > CROSSOVER_THRESHOLD + DEEP_MUTATION_THRESHOLD and prob <= DEEP_MUTATION_THRESHOLD + DEEP_CROSSOVER_THRESHOLD:
+                elif prob > MUTATION_THRESHOLD + CROSSOVER_THRESHOLD and \
+                    prob <= MUTATION_THRESHOLD + CROSSOVER_THRESHOLD + DEEP_MUTATION_THRESHOLD:
                     self.population[i].deep_mutation()
-                else:
+                elif prob > MUTATION_THRESHOLD + CROSSOVER_THRESHOLD + DEEP_MUTATION_THRESHOLD and \
+                     prob <= MUTATION_THRESHOLD + CROSSOVER_THRESHOLD + DEEP_MUTATION_THRESHOLD + DEEP_CROSSOVER_THRESHOLD:
                     self.population[i].deep_crossover(winner)
+                else:
+                    self.population[i].mutate()
             self.percentages.append(self.population.percent_one())
+            self.winner_percentages.append(winner.percent_one())
+        graph_percentages(self.winner_percentages, gtype='winner')
         graph_percentages(self.percentages)
+

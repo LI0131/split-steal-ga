@@ -4,4 +4,4 @@
 I started this project prove for the tit-for-tat game-theory strategy.
 
 ## Graph Output ##
-![1000 Iterations Output](graphs/1000.png)
+![1000 Iterations Output](graphs/winner_1000.png)
